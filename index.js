@@ -332,7 +332,7 @@ app.get("/mycustomorder/:id", async function (req, res) {
          await connection.close();
         res.json(menu);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 });
 
