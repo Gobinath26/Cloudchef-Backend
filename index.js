@@ -245,7 +245,7 @@ app.get("/ytorder" ,async function (req, res) {
     try {
         let connection = await mongoClient.connect(URL);
         let db = connection.db("project3");
-        let menu = await db.collection("ytorder").find({status:'not taken'}).toArray();
+        let menu = await db.collection("ytorder").find({status:'taken'}).toArray();
         await connection.close();
         res.json(menu);
     } catch (error) {
