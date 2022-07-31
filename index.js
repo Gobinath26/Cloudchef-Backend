@@ -96,7 +96,17 @@ app.post('/login', async function (req, res) {
     }
 })
 
-
+app.post("/menu", async function (req, res) {
+    try {
+        let connection = await mongoClient.connect(URL);
+        let db = connection.db("project3")
+        await db.collection("menu").insertOne(req.body)
+         await connection.close();
+        res.json({ message: "item Added to cart" })
+    } catch (error) {
+        console.log(error)
+    }
+});
 
 app.get("/menu",authenticate ,async function (req, res) {
     try {
